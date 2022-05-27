@@ -24,6 +24,8 @@
         "quotes": ["error", "double"],
         "max-len": ["error", { "ignoreComments": true, "ignoreUrls": true }],
         "brace-style": ["error", "allman"],
-        "react/jsx-filename-extension": [0]
+        "react/jsx-filename-extension": [0],
+        "react/prefer-stateless-function": [0],
+        "no-useless-constructor": [0]
     }
 }
