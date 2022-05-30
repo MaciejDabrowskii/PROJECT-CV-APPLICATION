@@ -19,7 +19,8 @@ class GeneralInfo extends Component
         <form>
           <label htmlFor="general-name">Name:</label>
           <input
-            id="general-name"
+            name="personalData"
+            id="name"
             type="text"
             minLength="2"
             placeholder="John Doe"
@@ -29,7 +30,8 @@ class GeneralInfo extends Component
           />
           <label htmlFor="general-email">E-mail:</label>
           <input
-            id="general-email"
+            name="personalData"
+            id="email"
             type="email"
             minLength="2"
             placeholder="yourEmail@email.com"
@@ -39,7 +41,8 @@ class GeneralInfo extends Component
           />
           <label htmlFor="general-phone">Phone number:</label>
           <input
-            id="general-phone"
+            name="personalData"
+            id="phone"
             type="number"
             minLength="9"
             placeholder="999999999"
@@ -49,7 +52,8 @@ class GeneralInfo extends Component
           />
           <label htmlFor="general-website">Website:</label>
           <input
-            id="general-website"
+            name="personalData"
+            id="website"
             type="text"
             minLength="5"
             placeholder="yourPage.com"
@@ -58,7 +62,8 @@ class GeneralInfo extends Component
           />
           <label htmlFor="general-github">Github:</label>
           <input
-            id="general-github"
+            name="personalData"
+            id="github"
             type="text"
             minLength="5"
             placeholder="yourPage.com"
@@ -67,7 +72,8 @@ class GeneralInfo extends Component
           />
           <label htmlFor="general-linkedin">Linkedin</label>
           <input
-            id="general-linkedin"
+            name="personalData"
+            id="linkedin"
             type="text"
             minLength="5"
             placeholder="yourPage.com"

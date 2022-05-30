@@ -1,11 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-unused-class-component-methods */
 /* eslint-disable react/no-unused-state */
 import React, { Component } from "react";
+import uniqid from "uniqid";
 import GeneralInfo from "./components/general-info";
 import Education from "./components/education";
+import PrintSchools from "./components/show-schools";
 
 class App extends Component
 {
@@ -30,6 +33,7 @@ class App extends Component
         subject: "",
         dateStart: "",
         dateEnd: "",
+        id: uniqid(),
       },
       experience: {
         comapnyName: "",
@@ -41,93 +45,29 @@ class App extends Component
 
     this.handleChange.bind(this);
     this.onSubmitSchool.bind(this);
+    this.onDeleteSchool.bind(this);
   }
 
   handleChange = (e) =>
   {
-    switch (e.target.id)
-    {
-      case "general-name":
-        this.setState({
-          personalData: {
-            name: e.target.value,
-          },
-        });
-        break;
-
-      case "general-email":
-        this.setState({
-          personalData: {
-            email: e.target.value,
-          },
-        });
-        break;
-
-      case "general-phone":
-        this.setState({
-          personalData: {
-            number: e.target.value,
-          },
-        });
-        break;
-      case "general-github":
-        this.setState({
-          personalData: {
-            github: e.target.value,
-          },
-        });
-        break;
-      case "general-linkedin":
-        this.setState({
-          personalData: {
-            number: e.target.value,
-          },
-        });
-        break;
-      case "general-website":
-        this.setState({
-          personalData: {
-            website: e.target.value,
-          },
-        });
-        break;
-      case "education-school":
-        this.setState({
-          education: {
-            schoolName: e.target.value,
-          },
-        });
-        break;
-      case "education-subject":
-        this.setState({
-          education: {
-            subject: e.target.value,
-          },
-        });
-        break;
-      case "education-start":
-        this.setState({
-          education: {
-            dateStart: e.target.value,
-          },
-        });
-        break;
-      case "education-end":
-        this.setState({
-          education: {
-            dateEnd: e.target.value,
-          },
-        });
-        break;
-      default:
-    }
+    const { value, id, name } = e.target;
+    this.setState((prevState) => ({
+      [name]: {
+        ...prevState[name],
+        [id]: value,
+      },
+    }));
   };
 
   onSubmitSchool = (e) =>
   {
     e.preventDefault();
-    this.setState({
+    if (Object.values(this.state.education)
+      .every((el) => !el)) return;
+    this.setState((prevState) => ({
+      ...prevState,
       personalData: {
+        ...prevState.personalData,
         schools: this.state.personalData.schools.concat(this.state.education),
       },
       education: {
@@ -135,26 +75,53 @@ class App extends Component
         subject: "",
         dateStart: "",
         dateEnd: "",
+        id: uniqid(),
       },
-    });
-    console.log(this.state.personalData.schools.length);
+    }));
+  };
+
+  onDeleteSchool = (e) =>
+  {
+    const { personalData } = this.state;
+    this.setState((prevState) => ({
+      ...prevState,
+      personalData: {
+        ...prevState.personalData,
+        schools: personalData.schools.filter((school) => school.id !== e.target.parentElement.dataset.key),
+      },
+    }));
   };
 
   render()
   {
+    const {
+      editMode, personalData, education, experience,
+    } = this.state;
     return (
+
       <div className="App">
         <h2>GENERAL INFO</h2>
-        <GeneralInfo handleChange={this.handleChange} personalData={this.state} />
+        <GeneralInfo
+          handleChange={this.handleChange}
+          personalData={this.state}
+        />
+        <p>
+          {personalData.name}
+          {personalData.email}
+          {personalData.phone}
+          {personalData.github}
+        </p>
         <h2>Education</h2>
         <div className="education">
-          <Education handleChange={this.handleChange} onSubmitSchool={this.onSubmitSchool} />
-          <button
-            className="add-school-btn"
-            type="button"
-          >
-            Add School
-          </button>
+          <PrintSchools
+            personalData={personalData}
+            onDeleteSchool={this.onDeleteSchool}
+          />
+          <Education
+            handleChange={this.handleChange}
+            onSubmitSchool={this.onSubmitSchool}
+            education={education}
+          />
         </div>
       </div>
     );

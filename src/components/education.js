@@ -16,42 +16,51 @@ class Education extends Component
     const {
       handleChange,
       onSubmitSchool,
+      education,
     } = this.props;
     return (
       <form>
-        <label htmlFor="education-school">School Name:</label>
+        <label htmlFor="schoolName">School Name:</label>
         <input
-          id="education-school"
+          name="education"
+          id="schoolName"
           type="text"
           minLength="2"
           placeholder="School name"
           onChange={this.props.handleChange}
+          value={this.props.education.schoolName}
           required
         />
-        <label htmlFor="education-subject">Subject and Title:</label>
+        <label htmlFor="subject">Subject and Title:</label>
         <input
-          id="education-subject"
+          name="education"
+          id="subject"
           type="text"
           minLength="2"
           placeholder="Subject"
           onChange={this.props.handleChange}
+          value={this.props.education.subject}
         />
-        <label htmlFor="education-start">Start Year:</label>
+        <label htmlFor="dateStart">Start Year:</label>
         <input
-          id="education-start"
+          name="education"
+          id="dateStart"
           type="number"
           minLength="4"
           maxLength="4"
           onChange={this.props.handleChange}
+          value={this.props.education.dateStart}
           required
         />
-        <label htmlFor="education-end">End Year:</label>
+        <label htmlFor="dateEnd">End Year:</label>
         <input
-          id="education-end"
+          name="education"
+          id="dateEnd"
           type="nuber"
           minLength="4"
           maxLength="4"
           onChange={this.props.handleChange}
+          value={this.props.education.dateEnd}
         />
         <input
           className="submit-school-btn"
