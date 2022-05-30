@@ -2,25 +2,27 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
 
-function ShowSchools(props)
+function ShowJobs(props)
 {
   const { personalData, onDelete } = props;
   return (
     <ul>
-      {personalData.schools.map((school) => (
-        <li key={school.id} data-key={school.id}>
-          {school.schoolName}
+      {personalData.jobs.map((job) => (
+        <li key={job.id} data-key={job.id}>
+          {job.comapnyName}
           {" "}
-          {school.subject}
+          {job.position}
           {" "}
-          {school.dateStart}
+          {job.description}
+          {" "}
+          {job.jobStart}
           {" "}
           -
           {" "}
-          {school.dateEnd}
+          {job.jobEnd}
           <button
             type="button"
-            onClick={(e) => onDelete(e, "schools")}
+            onClick={(e) => onDelete(e, "jobs")}
           >
             Delete
           </button>
@@ -29,4 +31,4 @@ function ShowSchools(props)
     </ul>
   );
 }
-export default ShowSchools;
+export default ShowJobs;

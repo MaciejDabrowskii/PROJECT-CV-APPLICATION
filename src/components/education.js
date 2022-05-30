@@ -27,8 +27,8 @@ class Education extends Component
           type="text"
           minLength="2"
           placeholder="School name"
-          onChange={this.props.handleChange}
-          value={this.props.education.schoolName}
+          onChange={handleChange}
+          value={education.schoolName}
           required
         />
         <label htmlFor="subject">Subject and Title:</label>
@@ -38,35 +38,33 @@ class Education extends Component
           type="text"
           minLength="2"
           placeholder="Subject"
-          onChange={this.props.handleChange}
-          value={this.props.education.subject}
+          onChange={handleChange}
+          value={education.subject}
         />
         <label htmlFor="dateStart">Start Year:</label>
         <input
           name="education"
           id="dateStart"
-          type="number"
           minLength="4"
           maxLength="4"
-          onChange={this.props.handleChange}
-          value={this.props.education.dateStart}
+          onChange={handleChange}
+          value={education.dateStart}
           required
         />
         <label htmlFor="dateEnd">End Year:</label>
         <input
           name="education"
           id="dateEnd"
-          type="nuber"
           minLength="4"
           maxLength="4"
-          onChange={this.props.handleChange}
-          value={this.props.education.dateEnd}
+          onChange={handleChange}
+          value={education.dateEnd}
         />
         <input
           className="submit-school-btn"
           type="submit"
           value="Confirm"
-          onClick={this.props.onSubmitSchool}
+          onClick={onSubmitSchool}
         />
       </form>
     );
