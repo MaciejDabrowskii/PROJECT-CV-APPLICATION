@@ -7,27 +7,47 @@ function ShowJobs(props)
   const { personalData, onDelete } = props;
   return (
     <ul>
-      {personalData.jobs.map((job) => (
-        <li key={job.id} data-key={job.id}>
-          {job.comapnyName}
-          {" "}
-          {job.position}
-          {" "}
-          {job.description}
-          {" "}
-          {job.jobStart}
-          {" "}
-          -
-          {" "}
-          {job.jobEnd}
-          <button
-            type="button"
-            onClick={(e) => onDelete(e, "jobs")}
-          >
-            Delete
-          </button>
-        </li>
-      ))}
+      {personalData.jobs
+        .sort((a, b) => b.jobStart - a.jobStart)
+        .map((job) => (
+          <li key={job.id} data-key={job.id}>
+            <div
+              className="job"
+            >
+              <p
+                className="job-date"
+              >
+                {job.jobStart}
+                {" "}
+                -
+                {" "}
+                {job.jobEnd}
+              </p>
+              <p
+                className="job-position"
+              >
+                {job.position}
+              </p>
+              <p
+                className="job-comapny"
+              >
+                {job.comapnyName}
+              </p>
+              <p
+                className="job-decription"
+              />
+
+              {job.description}
+            </div>
+            <button
+              type="button"
+              name="jobs"
+              onClick={onDelete}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
     </ul>
   );
 }

@@ -15,7 +15,7 @@ class Education extends Component
   {
     const {
       handleChange,
-      onSubmitSchool,
+      onSubmit,
       education,
     } = this.props;
     return (
@@ -61,10 +61,11 @@ class Education extends Component
           value={education.dateEnd}
         />
         <input
+          name="education"
           className="submit-school-btn"
           type="submit"
           value="Confirm"
-          onClick={onSubmitSchool}
+          onClick={onSubmit}
         />
       </form>
     );

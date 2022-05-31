@@ -1,3 +1,6 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable consistent-return */
+/* eslint-disable no-return-assign */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable max-len */
@@ -11,6 +14,7 @@ import Education from "./components/education";
 import Experience from "./components/experience";
 import ShowSchools from "./components/show-schools";
 import ShowJobs from "./components/show-jobs";
+import Languages from "./components/languages";
 
 class App extends Component
 {
@@ -29,6 +33,8 @@ class App extends Component
         linkedin: "",
         schools: [],
         jobs: [],
+        skills: [],
+        languages: [],
       },
       education: {
         schoolName: "",
@@ -43,6 +49,15 @@ class App extends Component
         description: "",
         jobStart: "",
         jobEnd: "",
+        id: uniqid(),
+      },
+      skill: {
+        type: "",
+        id: uniqid(),
+      },
+      language: {
+        languageName: "",
+        proficiency: "",
         id: uniqid(),
       },
     };
@@ -62,68 +77,55 @@ class App extends Component
     }));
   };
 
-  onSubmitSchool = (e) =>
+  onSubmit = (e) =>
   {
     e.preventDefault();
-    if (Object.values(this.state.education)
-      .every((el) => !el)) return;
+    const { name } = e.target;
+    let key = "";
+
+    switch (name)
+    {
+      case "experience":
+        key = "jobs";
+        break;
+      case "education":
+        key = "schools";
+        break;
+      case "language":
+        key = "languages";
+        break;
+      case "skill":
+        key = "skills";
+        break;
+      default:
+    }
+
+    const emptyState = {};
+    const keys = Object.keys(this.state[name]);
     this.setState((prevState) => ({
       ...prevState,
       personalData: {
         ...prevState.personalData,
-        schools: this.state.personalData.schools.concat(this.state.education),
-      },
-      education: {
-        schoolName: "",
-        subject: "",
-        dateStart: "",
-        dateEnd: "",
-        id: uniqid(),
+        [key]: this.state.personalData[key].concat(this.state[name]),
       },
     }));
-  };
 
-  onSubmitExperience = (e) =>
-  {
-    e.preventDefault();
+    keys.forEach((el) => (el === "id" ? emptyState[el] = uniqid() : emptyState[el] = ""));
     this.setState((prevState) => ({
       ...prevState,
-      personalData: {
-        ...prevState.personalData,
-        jobs: this.state.personalData.jobs.concat(this.state.experience),
-      },
-      experience: {
-        comapnyName: "",
-        position: "",
-        description: "",
-        jobStart: "",
-        jobEnd: "",
-        id: uniqid(),
-      },
+      [name]: emptyState,
     }));
-    console.log(this.state.personalData.jobs.length);
   };
 
-  onDeleteSchool = (e) =>
+  onDelete = (e) =>
   {
     const { personalData } = this.state;
+    const { name } = e.target;
     this.setState((prevState) => ({
       ...prevState,
       personalData: {
         ...prevState.personalData,
-        schools: personalData.schools.filter((school) => school.id !== e.target.parentElement.dataset.key),
-      },
-    }));
-  };
-
-  onDelete = (e, key) =>
-  {
-    const { personalData } = this.state;
-    this.setState((prevState) => ({
-      ...prevState,
-      personalData: {
-        ...prevState.personalData,
-        [key]: personalData[key].filter((el) => el.id !== e.target.parentElement.dataset.key),
+        [name]: personalData[name].filter((el) => el.id !== e.target.parentElement.dataset.key),
       },
     }));
   };
@@ -141,17 +143,11 @@ class App extends Component
           handleChange={this.handleChange}
           personalData={this.state}
         />
-        <p>
-          {personalData.name}
-          {personalData.email}
-          {personalData.phone}
-          {personalData.github}
-        </p>
         <h2>Education</h2>
         <div className="education">
           <Education
             handleChange={this.handleChange}
-            onSubmitSchool={this.onSubmitSchool}
+            onSubmit={this.onSubmit}
             education={education}
           />
           <ShowSchools
@@ -163,9 +159,12 @@ class App extends Component
         <Experience
           experience={experience}
           handleChange={this.handleChange}
-          onSubmitExperience={this.onSubmitExperience}
+          onSubmit={this.onSubmit}
         />
         <ShowJobs personalData={personalData} onDelete={this.onDelete} />
+        <div>
+          <Languages />
+        </div>
       </div>
     );
   }

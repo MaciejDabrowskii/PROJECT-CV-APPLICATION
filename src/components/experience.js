@@ -16,22 +16,22 @@ class Experience extends Component
   {
     const {
       handleChange,
-      onSubmitExperience,
+      onSubmit,
       experience,
     } = this.props;
     return (
       <form>
-        <label htmlFor="comapnyName">School Name:</label>
+        <label htmlFor="comapnyName">Company Name:</label>
         <input
           name="experience"
           id="comapnyName"
           type="text"
           minLength="2"
-          placeholder="School name"
+          placeholder="Company Name"
           onChange={handleChange}
           value={experience.comapnyName}
         />
-        <label htmlFor="position">Subject and Title:</label>
+        <label htmlFor="position">Position:</label>
         <input
           name="experience"
           id="position"
@@ -71,10 +71,11 @@ class Experience extends Component
           value={experience.description}
         />
         <input
+          name="experience"
           className="submit-school-btn"
           type="submit"
           value="Confirm"
-          onClick={onSubmitExperience}
+          onClick={onSubmit}
         />
       </form>
     );
