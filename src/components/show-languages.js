@@ -4,7 +4,9 @@ import React, { Component } from "react";
 
 function ShowLanguages(props)
 {
-  const { personalData, onDelete, onEdit } = props;
+  const {
+    inEditMode, personalData, onDelete, onEdit,
+  } = props;
   return (
     <ul>
       {personalData.languages.map((language) => (
@@ -23,21 +25,26 @@ function ShowLanguages(props)
               {language.proficiency}
             </p>
           </div>
-          <button
-            type="button"
-            name="languages"
-            onClick={onDelete}
-          >
-            Delete
-          </button>
-          <button
-            type="button"
-            name="languages"
-            data-key="language"
-            onClick={onEdit}
-          >
-            Edit
-          </button>
+          {inEditMode
+              && (
+              <div data-key={language.id}>
+                <button
+                  type="button"
+                  name="languages"
+                  onClick={onDelete}
+                >
+                  Delete
+                </button>
+                <button
+                  type="button"
+                  name="languages"
+                  data-key="language"
+                  onClick={onEdit}
+                >
+                  Edit
+                </button>
+              </div>
+              )}
         </li>
       ))}
     </ul>

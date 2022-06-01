@@ -26,11 +26,12 @@ class App extends Component
     super(props);
 
     this.state = {
-      editMode: true,
+      editMode: false,
       personalData: {
         name: "",
-        email: "",
+        birth: "",
         phone: "",
+        email: "",
         website: "",
         github: "",
         linkedin: "",
@@ -133,6 +134,13 @@ class App extends Component
     });
   };
 
+  onChangeMode = () =>
+  {
+    this.setState((prevState) => ({
+      editMode: !prevState.editMode,
+    }));
+  };
+
   render()
   {
     const {
@@ -144,59 +152,126 @@ class App extends Component
       skill,
     } = this.state;
     return (
-
       <div className="App">
-        <h2>GENERAL INFO</h2>
-        <GeneralInfo
-          handleChange={this.handleChange}
-          personalData={this.state}
-        />
-        <h2>Education</h2>
-        <div className="education">
-          <Education
-            handleChange={this.handleChange}
-            onSubmit={this.onSubmit}
-            education={education}
-          />
-          <ShowSchools
-            personalData={personalData}
-            onDelete={this.onDelete}
-            onEdit={this.onEdit}
-          />
-        </div>
-        <h2>Experience</h2>
-        <Experience
-          experience={experience}
-          handleChange={this.handleChange}
-          onSubmit={this.onSubmit}
-        />
-        <ShowJobs
-          personalData={personalData}
-          onDelete={this.onDelete}
-          onEdit={this.onEdit}
-        />
-        <h2>Languages</h2>
-        <Languages
-          onSubmit={this.onSubmit}
-          handleChange={this.handleChange}
-          language={language}
-        />
-        <ShowLanguages
-          personalData={personalData}
-          onDelete={this.onDelete}
-          onEdit={this.onEdit}
-        />
-        <h2>Skills</h2>
-        <Skills
-          onSubmit={this.onSubmit}
-          handleChange={this.handleChange}
-          skill={skill.type}
-        />
-        <ShowSkills
-          personalData={personalData}
-          onDelete={this.onDelete}
-          onEdit={this.onEdit}
-        />
+        <button
+          type="button"
+          onClick={this.onChangeMode}
+        >
+          Change mode
+
+        </button>
+        {/* Display when in edit mode */}
+        {this.state.editMode
+        && (
+          <div className="edit-mode">
+            <h2>GENERAL INFO</h2>
+            <GeneralInfo
+              handleChange={this.handleChange}
+              personalData={personalData}
+            />
+            <h2>Education</h2>
+            <div className="education">
+              <Education
+                handleChange={this.handleChange}
+                onSubmit={this.onSubmit}
+                education={education}
+              />
+              <ShowSchools
+                personalData={personalData}
+                onDelete={this.onDelete}
+                onEdit={this.onEdit}
+                inEditMode={editMode}
+              />
+            </div>
+            <h2>Experience</h2>
+            <Experience
+              experience={experience}
+              handleChange={this.handleChange}
+              onSubmit={this.onSubmit}
+            />
+            <ShowJobs
+              personalData={personalData}
+              onDelete={this.onDelete}
+              onEdit={this.onEdit}
+              inEditMode={editMode}
+            />
+            <h2>Languages</h2>
+            <Languages
+              onSubmit={this.onSubmit}
+              handleChange={this.handleChange}
+              language={language}
+            />
+            <ShowLanguages
+              personalData={personalData}
+              onDelete={this.onDelete}
+              onEdit={this.onEdit}
+              inEditMode={editMode}
+            />
+            <h2>Skills</h2>
+            <Skills
+              onSubmit={this.onSubmit}
+              handleChange={this.handleChange}
+              skill={skill.type}
+            />
+            <ShowSkills
+              personalData={personalData}
+              onDelete={this.onDelete}
+              onEdit={this.onEdit}
+              inEditMode={editMode}
+            />
+          </div>
+        )}
+        {/* Display when NOT in edit mode */}
+        {!this.state.editMode
+        && (
+          <div className="preview-mode">
+            <h1 className="header">Curriculum Vitae</h1>
+            <div className="personal-info">
+              <h3 className="name">
+                {personalData.name}
+              </h3>
+              <p className="birth">
+                Birth date:
+                {" "}
+                {personalData.phone}
+              </p>
+              <p className="phone">
+                Phone number:
+                {" "}
+                {personalData.phone}
+              </p>
+              <p className="email">
+                Email:
+                {" "}
+                {personalData.phone}
+              </p>
+              {personalData.website !== ""
+              && (
+              <p className="website">
+                Website:
+                {" "}
+                <a href={personalData.website}>{personalData.website}</a>
+              </p>
+              )}
+              {personalData.github !== ""
+              && (
+              <p className="github">
+                Github:
+                {" "}
+                <a href={personalData.github}>{personalData.github}</a>
+              </p>
+              )}
+              {personalData.linkedin !== ""
+              && (
+              <p className="linkedin">
+                Linkedin:
+                {" "}
+                <a href={personalData.linkedin}>{personalData.linkedin}</a>
+              </p>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     );
   }

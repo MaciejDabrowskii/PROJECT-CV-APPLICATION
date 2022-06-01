@@ -4,7 +4,9 @@ import React, { Component } from "react";
 
 function ShowSkills(props)
 {
-  const { personalData, onDelete } = props;
+  const {
+    inEditMode, personalData, onDelete, onEdit,
+  } = props;
   return (
     <ul>
       {personalData.skills.map((skill) => (
@@ -18,13 +20,26 @@ function ShowSkills(props)
               {skill.type}
             </p>
           </div>
-          <button
-            type="button"
-            name="skills"
-            onClick={onDelete}
-          >
-            Delete
-          </button>
+          {inEditMode
+              && (
+              <div data-key={skill.id}>
+                <button
+                  type="button"
+                  name="skills"
+                  onClick={onDelete}
+                >
+                  Delete
+                </button>
+                <button
+                  type="button"
+                  name="skills"
+                  data-key="skill"
+                  onClick={onEdit}
+                >
+                  Edit
+                </button>
+              </div>
+              )}
         </li>
       ))}
     </ul>

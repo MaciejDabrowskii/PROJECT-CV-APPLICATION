@@ -4,7 +4,9 @@ import React, { Component } from "react";
 
 function ShowJobs(props)
 {
-  const { personalData, onDelete } = props;
+  const {
+    inEditMode, personalData, onDelete, onEdit,
+  } = props;
   return (
     <ul>
       {personalData.jobs
@@ -39,13 +41,26 @@ function ShowJobs(props)
 
               {job.description}
             </div>
-            <button
-              type="button"
-              name="jobs"
-              onClick={onDelete}
-            >
-              Delete
-            </button>
+            {inEditMode
+              && (
+              <div data-key={job.id}>
+                <button
+                  type="button"
+                  name="jobs"
+                  onClick={onDelete}
+                >
+                  Delete
+                </button>
+                <button
+                  type="button"
+                  name="jobs"
+                  data-key="experience"
+                  onClick={onEdit}
+                >
+                  Edit
+                </button>
+              </div>
+              )}
           </li>
         ))}
     </ul>

@@ -4,7 +4,9 @@ import React, { Component } from "react";
 
 function ShowSchools(props)
 {
-  const { personalData, onDelete, onEdit } = props;
+  const {
+    inEditMode, personalData, onDelete, onEdit,
+  } = props;
   return (
     <ul>
       {personalData.schools
@@ -37,21 +39,26 @@ function ShowSchools(props)
               {" "}
 
             </div>
-            <button
-              type="button"
-              name="schools"
-              onClick={onDelete}
-            >
-              Delete
-            </button>
-            <button
-              type="button"
-              name="schools"
-              data-key="education"
-              onClick={onEdit}
-            >
-              Edit
-            </button>
+            {inEditMode
+              && (
+              <div data-key={school.id}>
+                <button
+                  type="button"
+                  name="schools"
+                  onClick={onDelete}
+                >
+                  Delete
+                </button>
+                <button
+                  type="button"
+                  name="schools"
+                  data-key="education"
+                  onClick={onEdit}
+                >
+                  Edit
+                </button>
+              </div>
+              )}
           </li>
         ))}
     </ul>
