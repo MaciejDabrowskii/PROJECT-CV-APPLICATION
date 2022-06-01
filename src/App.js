@@ -270,6 +270,42 @@ class App extends Component
               </p>
               )}
             </div>
+            <div className="education">
+              <h2>Education:</h2>
+              <ShowSchools
+                personalData={personalData}
+                onDelete={this.onDelete}
+                onEdit={this.onEdit}
+                inEditMode={editMode}
+              />
+            </div>
+            <div className="experience">
+              <h2>Experience:</h2>
+              <ShowJobs
+                personalData={personalData}
+                onDelete={this.onDelete}
+                onEdit={this.onEdit}
+                inEditMode={editMode}
+              />
+            </div>
+            <div className="languages">
+              <h2>Languages:</h2>
+              <ShowLanguages
+                personalData={personalData}
+                onDelete={this.onDelete}
+                onEdit={this.onEdit}
+                inEditMode={editMode}
+              />
+            </div>
+            <div className="skills">
+              <h2>Skills:</h2>
+              <ShowSkills
+                personalData={personalData}
+                onDelete={this.onDelete}
+                onEdit={this.onEdit}
+                inEditMode={editMode}
+              />
+            </div>
           </div>
         )}
       </div>
