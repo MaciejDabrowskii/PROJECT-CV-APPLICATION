@@ -12,9 +12,12 @@ import uniqid from "uniqid";
 import GeneralInfo from "./components/general-info";
 import Education from "./components/education";
 import Experience from "./components/experience";
-import ShowSchools from "./components/show-schools";
-import ShowJobs from "./components/show-jobs";
 import Languages from "./components/languages";
+import Skills from "./components/skills";
+import ShowSchools from "./components/show-schools";
+import ShowSkills from "./components/show-skills";
+import ShowJobs from "./components/show-jobs";
+import ShowLanguages from "./components/show-languages";
 
 class App extends Component
 {
@@ -57,7 +60,7 @@ class App extends Component
       },
       language: {
         languageName: "",
-        proficiency: "",
+        proficiency: "" || "Elementary",
         id: uniqid(),
       },
     };
@@ -109,8 +112,11 @@ class App extends Component
         [key]: this.state.personalData[key].concat(this.state[name]),
       },
     }));
-
-    keys.forEach((el) => (el === "id" ? emptyState[el] = uniqid() : emptyState[el] = ""));
+    keys.forEach((el) => (
+      el === "id" ? emptyState[el] = uniqid()
+        : el === "proficiency" ? emptyState[el] = "Elementary"
+          : emptyState[el] = ""
+    ));
     this.setState((prevState) => ({
       ...prevState,
       [name]: emptyState,
@@ -130,10 +136,20 @@ class App extends Component
     }));
   };
 
+  onEdit = () =>
+  {
+
+  };
+
   render()
   {
     const {
-      editMode, personalData, education, experience,
+      editMode,
+      personalData,
+      education,
+      experience,
+      language,
+      skill,
     } = this.state;
     return (
 
@@ -161,10 +177,30 @@ class App extends Component
           handleChange={this.handleChange}
           onSubmit={this.onSubmit}
         />
-        <ShowJobs personalData={personalData} onDelete={this.onDelete} />
-        <div>
-          <Languages />
-        </div>
+        <ShowJobs
+          personalData={personalData}
+          onDelete={this.onDelete}
+        />
+        <h2>Languages</h2>
+        <Languages
+          onSubmit={this.onSubmit}
+          handleChange={this.handleChange}
+          language={language}
+        />
+        <ShowLanguages
+          personalData={personalData}
+          onDelete={this.onDelete}
+        />
+        <h2>Skills</h2>
+        <Skills
+          onSubmit={this.onSubmit}
+          handleChange={this.handleChange}
+          skill={skill.type}
+        />
+        <ShowSkills
+          personalData={personalData}
+          onDelete={this.onDelete}
+        />
       </div>
     );
   }

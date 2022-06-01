@@ -16,26 +16,28 @@ class Languages extends Component
   {
     const {
       handleChange,
-      onSubmitExperience,
-      experience,
+      onSubmit,
+      language,
     } = this.props;
     return (
       <div
-        className="languages"
+        className="languages-input-container"
       >
         <form>
-          <label htmlFor="language-name">Language:</label>
+          <label htmlFor="languageName">Language:</label>
           <input
-            name="name"
+            name="language"
             id="languageName"
+            className="languages-name"
             type="text"
             onChange={handleChange}
+            value={language.languageName}
           />
-          <label htmlFor="language-proficiency">Proficiency</label>
+          <label htmlFor="proficiency">Proficiency</label>
           <select
-            name="proficiency"
+            name="language"
             id="proficiency"
-            defaultValue="Elementary"
+            className="languages-proficiency"
             onChange={handleChange}
           >
             <option value="Elementary">Elementary</option>
@@ -43,6 +45,13 @@ class Languages extends Component
             <option value="Advanced">Advanced</option>
             <option value="Native">Native</option>
           </select>
+          <input
+            name="language"
+            className="languages-submit"
+            type="submit"
+            value="Confirm"
+            onClick={onSubmit}
+          />
         </form>
       </div>
     );
