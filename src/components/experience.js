@@ -75,6 +75,7 @@ class Experience extends Component
             name="experience"
             className="submit-school-btn"
             type="submit"
+            data-key="jobs"
             value="Confirm"
             onClick={onSubmit}
           />

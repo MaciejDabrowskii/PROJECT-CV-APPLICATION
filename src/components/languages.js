@@ -47,6 +47,7 @@ class Languages extends Component
           </select>
           <input
             name="language"
+            data-key="languages"
             className="languages-submit"
             type="submit"
             value="Confirm"

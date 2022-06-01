@@ -64,6 +64,7 @@ class Education extends Component
           <input
             name="education"
             className="submit-school-btn"
+            data-key="schools"
             type="submit"
             value="Confirm"
             onClick={onSubmit}

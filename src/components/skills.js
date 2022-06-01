@@ -36,6 +36,7 @@ class Skills extends Component
           <input
             name="skill"
             className="skill-submit"
+            data-key="skills"
             type="submit"
             value="Confirm"
             onClick={onSubmit}

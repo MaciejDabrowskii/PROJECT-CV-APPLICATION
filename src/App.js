@@ -84,32 +84,16 @@ class App extends Component
   {
     e.preventDefault();
     const { name } = e.target;
-    let key = "";
-
-    switch (name)
-    {
-      case "experience":
-        key = "jobs";
-        break;
-      case "education":
-        key = "schools";
-        break;
-      case "language":
-        key = "languages";
-        break;
-      case "skill":
-        key = "skills";
-        break;
-      default:
-    }
-
+    const { key } = e.target.dataset;
     const emptyState = {};
     const keys = Object.keys(this.state[name]);
     this.setState((prevState) => ({
       ...prevState,
       personalData: {
         ...prevState.personalData,
-        [key]: this.state.personalData[key].concat(this.state[name]),
+        [key]: this.state.personalData[key]
+          .filter((el) => el.id !== this.state[name].id)
+          .concat(this.state[name]),
       },
     }));
     keys.forEach((el) => (
@@ -131,14 +115,22 @@ class App extends Component
       ...prevState,
       personalData: {
         ...prevState.personalData,
-        [name]: personalData[name].filter((el) => el.id !== e.target.parentElement.dataset.key),
+        [name]: personalData[name]
+          .filter((el) => el.id !== e.target.parentElement.dataset.key),
       },
     }));
   };
 
-  onEdit = () =>
+  onEdit = (e) =>
   {
-
+    const { personalData } = this.state;
+    const { name } = e.target;
+    const { key } = e.target.dataset;
+    const element = personalData[name]
+      .filter((el) => el.id === e.target.parentElement.dataset.key);
+    this.setState({
+      [key]: element[0],
+    });
   };
 
   render()
@@ -169,6 +161,7 @@ class App extends Component
           <ShowSchools
             personalData={personalData}
             onDelete={this.onDelete}
+            onEdit={this.onEdit}
           />
         </div>
         <h2>Experience</h2>
@@ -180,6 +173,7 @@ class App extends Component
         <ShowJobs
           personalData={personalData}
           onDelete={this.onDelete}
+          onEdit={this.onEdit}
         />
         <h2>Languages</h2>
         <Languages
@@ -190,6 +184,7 @@ class App extends Component
         <ShowLanguages
           personalData={personalData}
           onDelete={this.onDelete}
+          onEdit={this.onEdit}
         />
         <h2>Skills</h2>
         <Skills
@@ -200,6 +195,7 @@ class App extends Component
         <ShowSkills
           personalData={personalData}
           onDelete={this.onDelete}
+          onEdit={this.onEdit}
         />
       </div>
     );

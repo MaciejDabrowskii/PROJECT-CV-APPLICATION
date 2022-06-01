@@ -4,7 +4,7 @@ import React, { Component } from "react";
 
 function ShowLanguages(props)
 {
-  const { personalData, onDelete } = props;
+  const { personalData, onDelete, onEdit } = props;
   return (
     <ul>
       {personalData.languages.map((language) => (
@@ -29,6 +29,14 @@ function ShowLanguages(props)
             onClick={onDelete}
           >
             Delete
+          </button>
+          <button
+            type="button"
+            name="languages"
+            data-key="language"
+            onClick={onEdit}
+          >
+            Edit
           </button>
         </li>
       ))}

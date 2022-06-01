@@ -4,7 +4,7 @@ import React, { Component } from "react";
 
 function ShowSchools(props)
 {
-  const { personalData, onDelete } = props;
+  const { personalData, onDelete, onEdit } = props;
   return (
     <ul>
       {personalData.schools
@@ -43,6 +43,14 @@ function ShowSchools(props)
               onClick={onDelete}
             >
               Delete
+            </button>
+            <button
+              type="button"
+              name="schools"
+              data-key="education"
+              onClick={onEdit}
+            >
+              Edit
             </button>
           </li>
         ))}
