@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 import React, { Component } from "react";
 import ShowSchools from "./show-schools";
 import ShowSkills from "./show-skills";
@@ -39,7 +40,7 @@ class DisplayEdit extends Component
           handleChange={onChange}
           personalData={personalData}
         />
-        <h2>Education</h2>
+        <h2>EDUCATION</h2>
         <div className="education">
           <Education
             handleChange={onChange}
@@ -53,7 +54,7 @@ class DisplayEdit extends Component
             inEditMode={editMode}
           />
         </div>
-        <h2>Experience</h2>
+        <h2>EXPERIENCE</h2>
         <Experience
           experience={experience}
           handleChange={onChange}
@@ -65,7 +66,7 @@ class DisplayEdit extends Component
           onEdit={onEdit}
           inEditMode={editMode}
         />
-        <h2>Languages</h2>
+        <h2>LANGUAGES</h2>
         <Languages
           onSubmit={onSubmit}
           handleChange={onChange}
@@ -77,7 +78,7 @@ class DisplayEdit extends Component
           onEdit={onEdit}
           inEditMode={editMode}
         />
-        <h2>Skills</h2>
+        <h2>SKILLS</h2>
         <Skills
           onSubmit={onSubmit}
           handleChange={onChange}
