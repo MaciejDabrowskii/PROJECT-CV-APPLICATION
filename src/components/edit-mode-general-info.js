@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/prop-types */
+
 import React, { Component } from "react";
 
 class GeneralInfo extends Component

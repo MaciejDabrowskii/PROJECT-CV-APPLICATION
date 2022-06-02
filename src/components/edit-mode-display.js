@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable class-methods-use-this */
 import React, { Component } from "react";
 import ShowSchools from "./show-schools";
 import ShowSkills from "./show-skills";

@@ -1,25 +1,13 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable consistent-return */
 /* eslint-disable no-return-assign */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-access-state-in-setstate */
-/* eslint-disable max-len */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/no-unused-class-component-methods */
-/* eslint-disable react/no-unused-state */
+
 import React, { Component } from "react";
 import uniqid from "uniqid";
-import GeneralInfo from "./components/edit-mode-general-info";
-import Education from "./components/edit-mode-education";
-import Experience from "./components/edit-mode-experience";
-import Languages from "./components/edit-mode-languages";
-import Skills from "./components/edit-mode-skills";
-import ShowSchools from "./components/show-schools";
-import ShowSkills from "./components/show-skills";
-import ShowJobs from "./components/show-jobs";
-import ShowLanguages from "./components/show-languages";
 import DisplayPreview from "./components/preview-mode-display";
 import DisplayEdit from "./components/edit-mode-display";
+import DisplayHeader from "./components/header";
 
 class App extends Component
 {
@@ -166,12 +154,10 @@ class App extends Component
     } = this.state;
     return (
       <div className="App">
-        <button
-          type="button"
-          onClick={this.onChangeMode}
-        >
-          {modeText}
-        </button>
+        <DisplayHeader
+          onChangeMode={this.onChangeMode}
+          modeText={modeText}
+        />
         {/* Display when in edit mode */}
         {this.state.editMode
         && (
