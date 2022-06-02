@@ -41,7 +41,10 @@ function ShowSchools(props)
             </div>
             {inEditMode
               && (
-              <div data-key={school.id}>
+              <div
+                data-key={school.id}
+                className="button-container"
+              >
                 <button
                   type="button"
                   name="schools"

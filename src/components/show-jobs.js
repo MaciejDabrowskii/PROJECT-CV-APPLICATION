@@ -43,7 +43,10 @@ function ShowJobs(props)
             </div>
             {inEditMode
               && (
-              <div data-key={job.id}>
+              <div
+                data-key={job.id}
+                className="button-container"
+              >
                 <button
                   type="button"
                   name="jobs"

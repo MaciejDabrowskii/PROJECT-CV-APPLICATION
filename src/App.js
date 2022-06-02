@@ -9,15 +9,17 @@
 /* eslint-disable react/no-unused-state */
 import React, { Component } from "react";
 import uniqid from "uniqid";
-import GeneralInfo from "./components/general-info";
-import Education from "./components/education";
-import Experience from "./components/experience";
-import Languages from "./components/languages";
-import Skills from "./components/skills";
+import GeneralInfo from "./components/edit-mode-general-info";
+import Education from "./components/edit-mode-education";
+import Experience from "./components/edit-mode-experience";
+import Languages from "./components/edit-mode-languages";
+import Skills from "./components/edit-mode-skills";
 import ShowSchools from "./components/show-schools";
 import ShowSkills from "./components/show-skills";
 import ShowJobs from "./components/show-jobs";
 import ShowLanguages from "./components/show-languages";
+import DisplayPreview from "./components/preview-mode-display";
+import DisplayEdit from "./components/edit-mode-display";
 
 class App extends Component
 {
@@ -26,7 +28,9 @@ class App extends Component
     super(props);
 
     this.state = {
-      editMode: false,
+      editMode: true,
+      modeText: "Preview",
+
       personalData: {
         name: "",
         birth: "",
@@ -70,7 +74,7 @@ class App extends Component
     // this.onDeleteSchool.bind(this);
   }
 
-  handleChange = (e) =>
+  onChange = (e) =>
   {
     const { value, id, name } = e.target;
     this.setState((prevState) => ({
@@ -139,6 +143,14 @@ class App extends Component
     this.setState((prevState) => ({
       editMode: !prevState.editMode,
     }));
+    switch (this.state.editMode)
+    {
+      case true: this.setState({ modeText: "Edit" });
+        break;
+      case false: this.setState({ modeText: "Preview" });
+        break;
+      default:
+    }
   };
 
   render()
@@ -150,6 +162,7 @@ class App extends Component
       experience,
       language,
       skill,
+      modeText,
     } = this.state;
     return (
       <div className="App">
@@ -157,156 +170,34 @@ class App extends Component
           type="button"
           onClick={this.onChangeMode}
         >
-          Change mode
-
+          {modeText}
         </button>
         {/* Display when in edit mode */}
         {this.state.editMode
         && (
-          <div className="edit-mode">
-            <h2>GENERAL INFO</h2>
-            <GeneralInfo
-              handleChange={this.handleChange}
-              personalData={personalData}
-            />
-            <h2>Education</h2>
-            <div className="education">
-              <Education
-                handleChange={this.handleChange}
-                onSubmit={this.onSubmit}
-                education={education}
-              />
-              <ShowSchools
-                personalData={personalData}
-                onDelete={this.onDelete}
-                onEdit={this.onEdit}
-                inEditMode={editMode}
-              />
-            </div>
-            <h2>Experience</h2>
-            <Experience
-              experience={experience}
-              handleChange={this.handleChange}
-              onSubmit={this.onSubmit}
-            />
-            <ShowJobs
-              personalData={personalData}
-              onDelete={this.onDelete}
-              onEdit={this.onEdit}
-              inEditMode={editMode}
-            />
-            <h2>Languages</h2>
-            <Languages
-              onSubmit={this.onSubmit}
-              handleChange={this.handleChange}
-              language={language}
-            />
-            <ShowLanguages
-              personalData={personalData}
-              onDelete={this.onDelete}
-              onEdit={this.onEdit}
-              inEditMode={editMode}
-            />
-            <h2>Skills</h2>
-            <Skills
-              onSubmit={this.onSubmit}
-              handleChange={this.handleChange}
-              skill={skill.type}
-            />
-            <ShowSkills
-              personalData={personalData}
-              onDelete={this.onDelete}
-              onEdit={this.onEdit}
-              inEditMode={editMode}
-            />
-          </div>
+        <DisplayEdit
+          personalData={personalData}
+          editMode={editMode}
+          education={education}
+          experience={experience}
+          language={language}
+          skill={skill}
+          onDelete={this.onDelete}
+          onEdit={this.onEdit}
+          onChange={this.onChange}
+          onSubmit={this.onSubmit}
+        />
         )}
         {/* Display when NOT in edit mode */}
         {!this.state.editMode
         && (
-          <div className="preview-mode">
-            <h1 className="header">Curriculum Vitae</h1>
-            <div className="personal-info">
-              <h3 className="name">
-                {personalData.name}
-              </h3>
-              <p className="birth">
-                Birth date:
-                {" "}
-                {personalData.phone}
-              </p>
-              <p className="phone">
-                Phone number:
-                {" "}
-                {personalData.phone}
-              </p>
-              <p className="email">
-                Email:
-                {" "}
-                {personalData.phone}
-              </p>
-              {personalData.website !== ""
-              && (
-              <p className="website">
-                Website:
-                {" "}
-                <a href={personalData.website}>{personalData.website}</a>
-              </p>
-              )}
-              {personalData.github !== ""
-              && (
-              <p className="github">
-                Github:
-                {" "}
-                <a href={personalData.github}>{personalData.github}</a>
-              </p>
-              )}
-              {personalData.linkedin !== ""
-              && (
-              <p className="linkedin">
-                Linkedin:
-                {" "}
-                <a href={personalData.linkedin}>{personalData.linkedin}</a>
-              </p>
-              )}
-            </div>
-            <div className="education">
-              <h2>Education:</h2>
-              <ShowSchools
-                personalData={personalData}
-                onDelete={this.onDelete}
-                onEdit={this.onEdit}
-                inEditMode={editMode}
-              />
-            </div>
-            <div className="experience">
-              <h2>Experience:</h2>
-              <ShowJobs
-                personalData={personalData}
-                onDelete={this.onDelete}
-                onEdit={this.onEdit}
-                inEditMode={editMode}
-              />
-            </div>
-            <div className="languages">
-              <h2>Languages:</h2>
-              <ShowLanguages
-                personalData={personalData}
-                onDelete={this.onDelete}
-                onEdit={this.onEdit}
-                inEditMode={editMode}
-              />
-            </div>
-            <div className="skills">
-              <h2>Skills:</h2>
-              <ShowSkills
-                personalData={personalData}
-                onDelete={this.onDelete}
-                onEdit={this.onEdit}
-                inEditMode={editMode}
-              />
-            </div>
-          </div>
+
+        <DisplayPreview
+          personalData={personalData}
+          editMode={editMode}
+          onDelete={this.onDelete}
+          onEdit={this.onEdit}
+        />
         )}
       </div>
     );

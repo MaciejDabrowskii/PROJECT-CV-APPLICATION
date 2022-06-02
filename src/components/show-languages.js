@@ -27,7 +27,10 @@ function ShowLanguages(props)
           </div>
           {inEditMode
               && (
-              <div data-key={language.id}>
+              <div
+                data-key={language.id}
+                className="button-container"
+              >
                 <button
                   type="button"
                   name="languages"

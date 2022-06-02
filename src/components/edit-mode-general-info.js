@@ -86,17 +86,6 @@ class GeneralInfo extends Component
             onChange={handleChange}
             value={personalData.linkedin}
           />
-          <input
-            id="submit-btn"
-            type="submit"
-            value="Submit"
-          />
-          <button
-            className="edit-btn"
-            type="button"
-          >
-            Edit
-          </button>
         </form>
       </div>
     );

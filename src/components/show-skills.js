@@ -22,7 +22,10 @@ function ShowSkills(props)
           </div>
           {inEditMode
               && (
-              <div data-key={skill.id}>
+              <div
+                data-key={skill.id}
+                className="button-container"
+              >
                 <button
                   type="button"
                   name="skills"
