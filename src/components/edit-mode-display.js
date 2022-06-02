@@ -31,14 +31,17 @@ class DisplayEdit extends Component
       onEdit,
       onChange,
       onSubmit,
+      onPaste,
     } = this.props;
 
     return (
       <div className="edit-mode">
         <h2>GENERAL INFO</h2>
+
         <GeneralInfo
           handleChange={onChange}
           personalData={personalData}
+          onPaste={onPaste}
         />
         <h2>EDUCATION</h2>
         <div className="education">

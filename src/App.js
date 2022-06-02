@@ -4,6 +4,7 @@
 /* eslint-disable react/destructuring-assignment */
 
 import React, { Component } from "react";
+import "./style.css";
 import uniqid from "uniqid";
 import DisplayPreview from "./components/preview-mode-display";
 import DisplayEdit from "./components/edit-mode-display";
@@ -18,8 +19,8 @@ class App extends Component
     this.state = {
       editMode: true,
       modeText: "Preview",
-
       personalData: {
+        profileImg: "",
         name: "",
         birth: "",
         phone: "",
@@ -114,6 +115,18 @@ class App extends Component
     }));
   };
 
+  onPaste = (e) =>
+  {
+    this.setState((prevState) => ({
+      ...prevState,
+      personalData: {
+        ...prevState.personalData,
+        profileImg: e.clipboardData.getData("Text"),
+
+      },
+    }));
+  };
+
   onEdit = (e) =>
   {
     const { personalData } = this.state;
@@ -172,6 +185,7 @@ class App extends Component
           onEdit={this.onEdit}
           onChange={this.onChange}
           onSubmit={this.onSubmit}
+          onPaste={this.onPaste}
         />
         )}
         {/* Display when NOT in edit mode */}

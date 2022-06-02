@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 
 import React, { Component } from "react";
+import ProfileImg from "./edit-mode-profle-img";
 
 class GeneralInfo extends Component
 {
@@ -12,9 +13,14 @@ class GeneralInfo extends Component
 
   render()
   {
-    const { handleChange, personalData } = this.props;
+    const { handleChange, personalData, onPaste } = this.props;
     return (
       <div className="general-info">
+        <ProfileImg
+          onChange={handleChange}
+          personalData={personalData}
+          onPaste={onPaste}
+        />
         <form>
           <label htmlFor="general-name">Name:</label>
           <input

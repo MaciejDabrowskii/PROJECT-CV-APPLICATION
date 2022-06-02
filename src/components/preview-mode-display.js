@@ -26,6 +26,11 @@ class DisplayPreview extends Component
       <div className="preview-mode">
         <h1 className="header">Curriculum Vitae</h1>
         <div className="personal-info">
+          <img
+            className="profile-img"
+            alt="profile"
+            src={personalData.profileImg}
+          />
           <h3 className="name">
             {personalData.name}
           </h3>
