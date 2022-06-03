@@ -2,6 +2,8 @@
 /* eslint-disable react/prop-types */
 
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 class Languages extends Component
 {
@@ -43,14 +45,18 @@ class Languages extends Component
             <option value="Advanced">Advanced</option>
             <option value="Native">Native</option>
           </select>
-          <input
+          <button
             name="language"
             data-key="languages"
-            className="languages-submit"
-            type="submit"
-            value="Confirm"
+            className="languages-submit submit-btn"
+            type="button"
             onClick={onSubmit}
-          />
+          >
+            <FontAwesomeIcon
+              icon={faCircleCheck}
+              className="fa-solid"
+            />
+          </button>
         </form>
       </div>
     );

@@ -2,7 +2,11 @@
 
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheckSquare,
+  faTrash,
+  faPenToSquare,
+} from "@fortawesome/free-solid-svg-icons";
 
 function ShowSkills(props)
 {
@@ -44,7 +48,10 @@ function ShowSkills(props)
                   name="skills"
                   onClick={onDelete}
                 >
-                  Delete
+                  <FontAwesomeIcon
+                    icon={faTrash}
+                    className="fa-solid"
+                  />
                 </button>
                 <button
                   type="button"
@@ -52,7 +59,10 @@ function ShowSkills(props)
                   data-key="skill"
                   onClick={onEdit}
                 >
-                  Edit
+                  <FontAwesomeIcon
+                    icon={faPenToSquare}
+                    className="fa-solid"
+                  />
                 </button>
               </div>
               )}

@@ -104,6 +104,8 @@ class App extends Component
 
   onDelete = (e) =>
   {
+    e.stopPropagation();
+    console.log(e.target);
     const { personalData } = this.state;
     const { name } = e.target;
     this.setState((prevState) => ({

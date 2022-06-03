@@ -2,6 +2,8 @@
 /* eslint-disable react/prop-types */
 
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 class Experience extends Component
 {
@@ -69,14 +71,18 @@ class Experience extends Component
             onChange={handleChange}
             value={experience.description}
           />
-          <input
+          <button
             name="experience"
-            className="submit-experience-btn"
-            type="submit"
+            className="submit-experience-btn submit-btn"
+            type="button"
             data-key="jobs"
-            value="Confirm"
             onClick={onSubmit}
-          />
+          >
+            <FontAwesomeIcon
+              icon={faCircleCheck}
+              className="fa-solid"
+            />
+          </button>
         </form>
       </div>
     );

@@ -1,6 +1,8 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { Component } from "react";
+
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 function ShowSchools(props)
 {
@@ -12,7 +14,11 @@ function ShowSchools(props)
       {personalData.schools
         .sort((a, b) => b.dateStart - a.dateStart)
         .map((school) => (
-          <li key={school.id} data-key={school.id}>
+          <li
+            key={school.id}
+            data-key={school.id}
+            className="schools-list"
+          >
             <div
               className="school"
             >
@@ -35,22 +41,24 @@ function ShowSchools(props)
               >
                 {school.subject}
               </p>
-
               {" "}
-
             </div>
             {inEditMode
               && (
               <div
                 data-key={school.id}
                 className="button-container"
+                name="schools"
               >
                 <button
                   type="button"
                   name="schools"
                   onClick={onDelete}
                 >
-                  Delete
+                  <FontAwesomeIcon
+                    icon={faTrash}
+                    className="fa-solid"
+                  />
                 </button>
                 <button
                   type="button"
@@ -58,7 +66,10 @@ function ShowSchools(props)
                   data-key="education"
                   onClick={onEdit}
                 >
-                  Edit
+                  <FontAwesomeIcon
+                    icon={faPenToSquare}
+                    className="fa-solid"
+                  />
                 </button>
               </div>
               )}

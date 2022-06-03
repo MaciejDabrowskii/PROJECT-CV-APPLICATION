@@ -2,7 +2,11 @@
 
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrash,
+  faPenToSquare,
+  faCheckSquare,
+} from "@fortawesome/free-solid-svg-icons";
 
 function ShowLanguages(props)
 {
@@ -35,6 +39,8 @@ function ShowLanguages(props)
             <p
               className="language-proficiency"
             >
+              Proficiency:
+              {" "}
               {language.proficiency}
             </p>
           </div>
@@ -49,7 +55,10 @@ function ShowLanguages(props)
                   name="languages"
                   onClick={onDelete}
                 >
-                  Delete
+                  <FontAwesomeIcon
+                    name="schools"
+                    icon={faTrash}
+                  />
                 </button>
                 <button
                   type="button"
@@ -57,7 +66,10 @@ function ShowLanguages(props)
                   data-key="language"
                   onClick={onEdit}
                 >
-                  Edit
+                  <FontAwesomeIcon
+                    icon={faPenToSquare}
+                    className="fa-solid"
+                  />
                 </button>
               </div>
               )}
