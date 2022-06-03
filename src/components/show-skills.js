@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 
 function ShowSkills(props)
 {
@@ -8,9 +10,20 @@ function ShowSkills(props)
     inEditMode, personalData, onDelete, onEdit,
   } = props;
   return (
-    <ul>
+    <ul
+      className="skills-list fa-ul"
+    >
       {personalData.skills.map((skill) => (
-        <li key={skill.id} data-key={skill.id}>
+        <li
+          key={skill.id}
+          data-key={skill.id}
+        >
+          <span className="fa-li">
+            <FontAwesomeIcon
+              icon={faCheckSquare}
+              className="fa-regular fa-square"
+            />
+          </span>
           <div
             className="skill"
           >

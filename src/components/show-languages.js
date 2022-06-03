@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 
 function ShowLanguages(props)
 {
@@ -8,9 +10,20 @@ function ShowLanguages(props)
     inEditMode, personalData, onDelete, onEdit,
   } = props;
   return (
-    <ul>
+    <ul
+      className="languages-list fa-ul"
+    >
       {personalData.languages.map((language) => (
-        <li key={language.id} data-key={language.id}>
+        <li
+          key={language.id}
+          data-key={language.id}
+        >
+          <span className="fa-li">
+            <FontAwesomeIcon
+              icon={faCheckSquare}
+              className="fa-regular fa-square"
+            />
+          </span>
           <div
             className="language"
           >

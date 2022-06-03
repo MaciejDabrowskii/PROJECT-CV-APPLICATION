@@ -71,7 +71,7 @@ class Experience extends Component
           />
           <input
             name="experience"
-            className="submit-school-btn"
+            className="submit-experience-btn"
             type="submit"
             data-key="jobs"
             value="Confirm"

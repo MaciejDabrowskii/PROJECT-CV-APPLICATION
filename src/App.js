@@ -6,9 +6,10 @@
 import React, { Component } from "react";
 import "./style.css";
 import uniqid from "uniqid";
-import DisplayPreview from "./components/preview-mode-display";
-import DisplayEdit from "./components/edit-mode-display";
+import DisplayPreview from "./components/preview-mode";
+import DisplayEdit from "./components/edit-mode";
 import DisplayHeader from "./components/header";
+import DisplayFooter from "./components/footer";
 
 class App extends Component
 {
@@ -20,7 +21,7 @@ class App extends Component
       editMode: true,
       modeText: "Preview",
       personalData: {
-        profileImg: "",
+        profileImg: "https://i.pinimg.com/564x/05/01/95/050195e6a48d609d5e8bbf8392a181b6.jpg",
         name: "",
         birth: "",
         phone: "",
@@ -165,6 +166,7 @@ class App extends Component
       skill,
       modeText,
     } = this.state;
+
     return (
       <div className="App">
         <DisplayHeader
@@ -199,6 +201,7 @@ class App extends Component
           onEdit={this.onEdit}
         />
         )}
+        <DisplayFooter />
       </div>
     );
   }
