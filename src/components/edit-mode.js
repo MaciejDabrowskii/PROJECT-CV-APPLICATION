@@ -32,11 +32,12 @@ class DisplayEdit extends Component
       onChange,
       onSubmit,
       onPaste,
+      setSelectValue,
     } = this.props;
 
     return (
       <div className="edit-mode">
-        <h2>GENERAL INFO</h2>
+        <h2>GENERAL INFORMATION</h2>
 
         <GeneralInfo
           handleChange={onChange}
@@ -73,6 +74,7 @@ class DisplayEdit extends Component
         <Languages
           onSubmit={onSubmit}
           handleChange={onChange}
+          setSelectValue={setSelectValue}
           language={language}
         />
         <ShowLanguages

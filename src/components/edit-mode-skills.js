@@ -23,19 +23,24 @@ class Skills extends Component
       <div
         className="skills-input-container"
       >
-        <form>
-          <label htmlFor="type">Skill:</label>
-          <input
-            name="skill"
-            id="type"
-            className="skill-type"
-            type="text"
-            onChange={handleChange}
-            value={skill}
-          />
+        <form
+          className="skills-form"
+        >
+          <label htmlFor="type">
+            Skill:
+            <input
+              name="skill"
+              id="type"
+              className="skill-type-input"
+              type="text"
+              onChange={handleChange}
+              value={skill}
+            />
+
+          </label>
           <button
             name="skill"
-            className="skill-submit submit-btn"
+            className="skill-submit-btn submit-btn"
             data-key="skills"
             type="button"
             onClick={onSubmit}

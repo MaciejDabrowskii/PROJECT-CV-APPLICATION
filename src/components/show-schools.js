@@ -10,14 +10,16 @@ function ShowSchools(props)
     inEditMode, personalData, onDelete, onEdit,
   } = props;
   return (
-    <ul>
+    <ul
+      className="schools-list"
+    >
       {personalData.schools
         .sort((a, b) => b.dateStart - a.dateStart)
         .map((school) => (
           <li
             key={school.id}
             data-key={school.id}
-            className="schools-list"
+            className="school-element"
           >
             <div
               className="school"

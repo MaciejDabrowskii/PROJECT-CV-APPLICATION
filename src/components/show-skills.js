@@ -41,7 +41,7 @@ function ShowSkills(props)
               && (
               <div
                 data-key={skill.id}
-                className="button-container"
+                className="button-container button-container-skill"
               >
                 <button
                   type="button"

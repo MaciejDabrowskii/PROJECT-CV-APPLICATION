@@ -15,14 +15,14 @@ class GeneralInfo extends Component
   {
     const { handleChange, personalData, onPaste } = this.props;
     return (
-      <div className="general-info">
+      <div className="generalInfo-container">
         <ProfileImg
           onChange={handleChange}
           personalData={personalData}
           onPaste={onPaste}
         />
         <form
-          className="general-form"
+          className="generalInfo-form"
         >
           <label htmlFor="general-name">
             Name:

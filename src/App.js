@@ -75,6 +75,16 @@ class App extends Component
     }));
   };
 
+  setSelectValue = (value) =>
+  {
+    this.setState((prevState) => ({
+      language: {
+        ...prevState.language,
+        proficiency: value.value,
+      },
+    }));
+  };
+
   onSubmit = (e) =>
   {
     e.preventDefault();
@@ -104,8 +114,6 @@ class App extends Component
 
   onDelete = (e) =>
   {
-    e.stopPropagation();
-    console.log(e.target);
     const { personalData } = this.state;
     const { name } = e.target;
     this.setState((prevState) => ({
@@ -190,6 +198,7 @@ class App extends Component
           onChange={this.onChange}
           onSubmit={this.onSubmit}
           onPaste={this.onPaste}
+          setSelectValue={this.setSelectValue}
         />
         )}
         {/* Display when NOT in edit mode */}

@@ -22,7 +22,7 @@ function ShowLanguages(props)
           key={language.id}
           data-key={language.id}
         >
-          <span className="fa-li">
+          <span className="fa-li list-marker">
             <FontAwesomeIcon
               icon={faCheckSquare}
               className="fa-regular fa-square"
@@ -48,7 +48,7 @@ function ShowLanguages(props)
               && (
               <div
                 data-key={language.id}
-                className="button-container"
+                className="button-container button-container-language"
               >
                 <button
                   type="button"

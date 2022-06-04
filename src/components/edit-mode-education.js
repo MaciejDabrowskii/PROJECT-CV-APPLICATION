@@ -31,7 +31,7 @@ class Education extends Component
               id="schoolName"
               type="text"
               minLength="2"
-              placeholder="School name"
+              placeholder="School Name"
               onChange={handleChange}
               value={education.schoolName}
               required
@@ -45,7 +45,7 @@ class Education extends Component
               id="subject"
               type="text"
               minLength="2"
-              placeholder="Subject"
+              placeholder="Subject and Title"
               onChange={handleChange}
               value={education.subject}
             />

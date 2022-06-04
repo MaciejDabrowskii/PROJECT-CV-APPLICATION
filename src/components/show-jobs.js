@@ -22,6 +22,7 @@ function ShowJobs(props)
           <li
             key={job.id}
             data-key={job.id}
+            className="job-element"
           >
             <div
               className="job"
@@ -47,9 +48,9 @@ function ShowJobs(props)
               </p>
               <p
                 className="job-decription"
-              />
-
-              {job.description}
+              >
+                {job.description}
+              </p>
             </div>
             {inEditMode
               && (
