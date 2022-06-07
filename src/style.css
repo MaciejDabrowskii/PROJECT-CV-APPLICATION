@@ -1,19 +1,40 @@
+:root {
+  /* colors */
+  --main-blue: rgb(60, 143, 253);
+  --focus-blue-one: rgb(159, 201, 255);
+  --focus-blue-two: rgb(100, 168, 255);
+  --main-green: rgb(16, 185, 129);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 ::-webkit-input-placeholder {
   text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1rem;
 }
 
 :-moz-placeholder {
   /* Firefox 18- */
   text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1rem;
 }
 
 ::-moz-placeholder {
   /* Firefox 19+ */
   text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1rem;
 }
 
 :-ms-input-placeholder {
   text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1rem;
+}
+
+.css-14el2xx-placeholder{
+  font-size: 1rem;
 }
 
 input {
@@ -32,8 +53,8 @@ label {
 }
 input:focus,
 textarea:focus {
-  border: 2px solid rgb(159, 201, 255);
-  outline: 1px solid rgb(100, 168, 255);
+  border: 2px solid var(--focus-blue-one);
+  outline: 1px solid var(--focus-blue-two);
 }
 
 button > svg,
@@ -46,18 +67,19 @@ button {
   padding: 0.4rem;
   cursor: pointer;
   border-radius: 4px;
-  border: 1px solid white;
+  border: 1px solid rgb(255, 255, 255);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 h2 {
   display: inline-block;
   font-size: 2rem;
-  border-bottom: 0.3rem solid rgb(60, 143, 253);
+  border-bottom: 0.3rem solid var(--main-blue);
 }
 button:hover {
-  background-color: rgb(60, 143, 253);
-  color: white;
-  border-color: white;
+  background-color: var(--main-blue);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
 }
 
 ul {
@@ -71,12 +93,13 @@ ul {
   font-size: 3.5rem;
   width: 3.5rem;
   height: 3.5rem;
+  padding: 0;
   border: none;
   background-color: none;
   border-radius: 50%;
 }
 .submit-btn:hover {
-  color: rgb(16, 185, 129);
+  color: var(--main-green);
   cursor: pointer;
   background-color: rgb(255, 255, 255);
 }
@@ -99,9 +122,9 @@ ul {
   align-items: center;
   justify-content: center;
   position: relative;
-  max-width: 70rem;
-  min-width: 70rem;
-  background-color: rgb(60, 143, 253);
+  max-width: 90rem;
+  min-width: 90rem;
+  background-color: var(--main-blue);
   margin-bottom: 4rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
@@ -118,7 +141,7 @@ h1 {
   position: absolute;
   right: 0;
   margin-right: 3rem;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 
 .app-footer {
@@ -134,12 +157,13 @@ h1 {
 
 .git-icon {
   height: 2rem;
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
 .git-icon:hover {
   cursor: pointer;
   transform: rotate(360deg) scale(1.2);
+  color: var(--main-blue);
 }
 
 .preview-mode,
@@ -148,8 +172,8 @@ h1 {
   padding: 5rem;
   display: grid;
   align-items: center;
-  max-width: 60rem;
-  min-width: 60rem;
+  max-width: 70rem;
+  min-width: 0rem;
   margin-bottom: 4rem;
 }
 
@@ -194,6 +218,7 @@ h1 {
 .languages-input-container,
 .skills-input-container {
   position: relative;
+  margin-bottom: 2rem;
 }
 
 .submit-school-btn,
@@ -235,7 +260,7 @@ h1 {
 .school-name,
 .job-date {
   margin: 0.5rem;
-  border-bottom: 0.3rem solid rgb(60, 143, 253);
+  border-bottom: 0.3rem solid var(--main-blue);
   font-weight: bold;
 }
 
@@ -248,15 +273,24 @@ h1 {
   margin: 0.5rem 0.5rem 0.5rem 1rem;
 }
 
+.job-position {
+  font-weight: bold;
+}
+
+.job-comapny {
+  font-size: 1.2rem;
+}
+
 .job-decription {
   font-size: 1.1rem;
+  max-width: 45rem;
 }
 
 .language-name,
 .skill-type {
   margin: 0.5rem;
   display: inline-block;
-  border-bottom: 0.3rem solid rgb(60, 143, 253);
+  border-bottom: 0.3rem solid var(--main-blue);
   font-weight: bold;
 }
 
@@ -266,7 +300,7 @@ h1 {
 
 .fa-li {
   top: 0.7rem;
-  color: rgb(60, 143, 253);
+  color: var(--main-blue);
 }
 
 .button-container-skill,
@@ -274,4 +308,62 @@ h1 {
   position: absolute;
   right: 17rem;
   top: 0.2rem;
+}
+
+/* Preview mode */
+
+.preview-header {
+  width: 100%;
+  padding-bottom: 3rem;
+  border-bottom: 0.5rem solid var(--main-blue);
+  text-align: center;
+}
+
+.preview-profile-img-container {
+  width: 24rem;
+  height: 24rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  align-self: center;
+}
+
+.preview-profile-img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
+.preview-personal-info {
+  display: flex;
+  gap: 6rem;
+}
+
+.preview-personal-info-data {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+}
+
+.preview-personal-info-data > * {
+  font-weight: bold;
+}
+
+.preview-personal-info-data > h2 {
+  text-align: center;
+}
+
+.languages-preview > ul {
+  display: grid;
+  grid-template: 6rem /25rem 25rem;
+  grid-auto-columns: 25rem;
+  grid-auto-rows: 6rem;
+}
+
+.skills > ul {
+  display: grid;
+  grid-template: 5rem 5rem /20rem 20rem 20rem;
+  grid-auto-columns: 20rem;
+  grid-auto-rows: 5rem;
 }

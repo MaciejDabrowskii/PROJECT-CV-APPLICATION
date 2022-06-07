@@ -37,7 +37,7 @@ class GeneralInfo extends Component
             />
 
           </label>
-          <label htmlFor="birth">
+          <label htmlFor="general-birth">
             Birth Date:
             <input
               name="personalData"
@@ -49,7 +49,7 @@ class GeneralInfo extends Component
             />
 
           </label>
-          <label htmlFor="phone">
+          <label htmlFor="general-phone">
             Phone number:
             <input
               name="personalData"
@@ -61,7 +61,7 @@ class GeneralInfo extends Component
               value={personalData.phone}
             />
           </label>
-          <label htmlFor="email">
+          <label htmlFor="general-email">
             E-mail:
             <input
               name="personalData"
@@ -74,7 +74,7 @@ class GeneralInfo extends Component
             />
 
           </label>
-          <label htmlFor="website">
+          <label htmlFor="general-website">
             Website:
             <input
               name="personalData"
@@ -87,7 +87,7 @@ class GeneralInfo extends Component
             />
 
           </label>
-          <label htmlFor="github">
+          <label htmlFor="general-github">
             Github:
             <input
               name="personalData"
@@ -100,7 +100,7 @@ class GeneralInfo extends Component
             />
 
           </label>
-          <label htmlFor="linkedin">
+          <label htmlFor="general-linkedin">
             Linkedin
             <input
               name="personalData"
