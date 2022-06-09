@@ -18,6 +18,11 @@
 
 CV Application project, created with [React](https://reactjs.org/) library. The project is from [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-cv-application) curriculum.
 
+There are two branches of this project.
+
+- Main: where I used class component with heavy use of state and set state
+- rewrite-with-hooks: where I rewrote the main class component as a function with heavy use of hooks and set state
+
 ### Technologies
 
 - ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
