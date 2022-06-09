@@ -60,9 +60,6 @@ class App extends Component
         id: uniqid(),
       },
     };
-    // this.handleChange.bind(this);
-    // this.onSubmitSchool.bind(this);
-    // this.onDeleteSchool.bind(this);
   }
 
   onChange = (e) =>
