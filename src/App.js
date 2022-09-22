@@ -60,9 +60,13 @@ class App extends Component
         id: uniqid(),
       },
     };
-    // this.handleChange.bind(this);
-    // this.onSubmitSchool.bind(this);
-    // this.onDeleteSchool.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.setSelectValue = this.setSelectValue.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onDelete = this.onDelete.bind(this);
+    this.onPaste = this.onPaste.bind(this);
+    this.onEdit = this.onEdit.bind(this);
+    this.onChangeMode = this.onChangeMode.bind(this);
   }
 
   onChange = (e) =>

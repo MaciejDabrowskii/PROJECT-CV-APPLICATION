@@ -42,7 +42,7 @@ class DisplayPreview extends Component
             <p className="preview-birth">
               Birth date:
               {" "}
-              {personalData.phone}
+              {personalData.birth}
             </p>
             <p className="preview-phone">
               Phone number:
@@ -52,7 +52,7 @@ class DisplayPreview extends Component
             <p className="preview-email">
               Email:
               {" "}
-              {personalData.phone}
+              {personalData.email}
             </p>
             {personalData.website !== ""
               && (
